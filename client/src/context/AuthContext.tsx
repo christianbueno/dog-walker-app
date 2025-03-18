@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { setupMockInterceptor, isDemoMode } from '../services/mock/mockService';
 
 // Define types
 type User = {
@@ -45,6 +46,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Setup mock interceptor for demo mode
+  useEffect(() => {
+    // Setup the mock interceptor if in demo mode
+    const cleanupInterceptor = setupMockInterceptor();
+    
+    // Cleanup function to remove the interceptor when component unmounts
+    return () => {
+      cleanupInterceptor();
+    };
+  }, []);
 
   // Load user data if token exists
   useEffect(() => {

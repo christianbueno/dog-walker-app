@@ -143,6 +143,43 @@ npm run dev
 - Fixed TypeScript environment variable type definitions
 - Updated server configuration to work without MongoDB for demo purposes
 - Added placeholder images for the application
+- Configured GitHub Pages deployment with demo mode
+
+## GitHub Pages Deployment
+
+The frontend of this application is deployed to GitHub Pages in demo mode. In this mode, the application works without a backend server by using mock data.
+
+### Demo Features
+
+- Full UI experience without requiring a backend server
+- Mock data for pets, users, and bookings
+- Simulated authentication flow
+- All CRUD operations simulated with in-memory data
+
+### Deployment URL
+
+The application is deployed at: `https://[username].github.io/dog-walker-app/`
+
+### Deployment Process
+
+The application is automatically deployed to GitHub Pages using GitHub Actions whenever changes are pushed to the main branch. The deployment workflow:
+
+1. Builds the React application with Vite
+2. Configures the application for GitHub Pages
+3. Deploys the built files to GitHub Pages
+
+To deploy manually:
+
+```bash
+# Navigate to the client directory
+cd client
+
+# Build the application
+npm run build
+
+# Deploy to GitHub Pages (if using gh-pages package)
+npm run deploy
+```
 
 ## License
 
